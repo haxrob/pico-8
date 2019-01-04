@@ -1,5 +1,5 @@
 # pico-8
-Fun with the pico-8
+Having fun experementing with the pico-8 console. 
 
 [Gameball](carts/gameball.p8)
 
