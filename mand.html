@@ -1,0 +1,67 @@
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
+<script>
+
+	x_start=-2; 
+	x_end=1;
+	y_start=-1;
+	y_end=1;
+
+function intop(start, end, amt) {
+	return start + ((end-start)*amt);
+}
+
+function clicked() {
+	var x = event.pageX+10;
+	var y = event.pageY+10;
+	
+	x0 = x / (width / (x_end - x_start)) + x_start;
+	y0 = y / (height / (y_end - y_start)) + y_start;
+
+	zoom = 1.0/1.5;
+	x_start = intop(x0,x_start,zoom);
+	x_end = intop(x0, x_end, zoom);
+	y_start = intop(y0,y_start,zoom);
+	y_end = intop(y0,y_end,zoom);
+	draw(x_start,x_end,y_start,y_end);
+}
+
+var canvas = document.getElementById("myCanvas");
+canvas.addEventListener('click', clicked, false);
+
+var ctx = canvas.getContext("2d");
+
+width=400;height=400;
+r=255;g=0;b=0;a=255;
+
+draw(x_start,x_end,y_start,y_end);	
+function draw(x_start,x_end,y_start,y_end) {
+
+	max = 100;
+	for (var y=0;y<height;y++) {
+		for(var x=0;x<width;x++) {
+			var i = 0;
+			var zx = 0;
+			var zy = 0;
+			cx = x_start + (x/width) * (x_end-x_start); 
+			cy = y_start + (y/height) * (y_end - y_start);
+			//cx = x_start + (x/width) * j_x; 
+			//cy = y_start + (y/height) * j_y;
+			while (i < max && (zx*zx+zy*zy < 4)) {
+				xt = zx*zy;
+				zx=zx*zx - zy*zy + cx;
+				zy = 2*xt+cy;
+				i++;
+			}
+
+			h = (i/max)*360;
+		
+			s='50%';l='50%';
+			if (i>=max) {l='0%'};
+			hsl = 'hsl('+h+','+s+','+l+')';
+			ctx.fillStyle = hsl;
+			ctx.fillRect( x, y, 1, 1);
+		}
+	}
+}
+
+</script>
