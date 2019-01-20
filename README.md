@@ -5,8 +5,10 @@ Having fun experementing with the pico-8 console.
 
 ![gameball](images/gameball.gif)
 
-[Sparks](carts/sparks.p8)
+[Particles](carts/sparks.p8)
 
 ![sparks](images/sparks.gif)
 
-[Mandelbrot fractal](images/mandelbrot.gif)
+[Mandelbrot fractal](carts/mandelbrot.p8)
+
+![mandelbrot](images/mandelbrot.gif)
