@@ -9,4 +9,4 @@ Having fun experementing with the pico-8 console.
 
 ![sparks](images/sparks.gif)
 
-![mandelbrot](images/mandelbrot.gif)
+[Mandelbrot fractal](images/mandelbrot.gif)
